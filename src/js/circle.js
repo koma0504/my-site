@@ -1,5 +1,3 @@
-import gsap from "gsap";
-
 export const circle = () => {
   // 文字を円にする
   const ToArch = (element) => {

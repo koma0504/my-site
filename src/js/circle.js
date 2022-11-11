@@ -1,3 +1,5 @@
+import gsap from "gsap";
+
 export const circle = () => {
   // 文字を円にする
   const ToArch = (element) => {
@@ -27,7 +29,6 @@ export const circle = () => {
     }
     return element;
   };
-
   // 引数にはdocument要素を入れること。
   const archtarget = document.querySelector(".circle_number");
   ToArch(archtarget);

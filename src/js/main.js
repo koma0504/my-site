@@ -1,9 +1,9 @@
 "use strict";
 import "../scss/style.scss";
-import { theme } from "./theme";
-import { circle } from "./circle";
 import gsap from "gsap";
 import WebFont from "webfontloader";
+import { theme } from "./theme";
+import { circle } from "./circle";
 
 window.addEventListener("DOMContentLoaded", () => {
   //bg関連//////////////////////////
@@ -31,6 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const random = Math.floor(Math.random() * bgImages.length);
     imageArray[random].style.display = "block";
   };
+
   imageRandom(bgImages); // テーマボタンクリック時BG変更
   const switchTheme = () => {
     const storageTheme = sessionStorage.getItem("theme");
@@ -107,6 +108,8 @@ window.addEventListener("DOMContentLoaded", () => {
     let val = ((value - fromMin) / (fromMax - fromMin)) * (toMax - toMin) + toMin;
     return trimming ? Math.Max(Math.min(val, toMax), toMin) : val;
   };
+  // F値初期化
+  gsap.set(".circle_number", { rotation: 218 });
 
   const scrollParallax = () => {
     let scrollY = window.pageYOffset;
@@ -160,6 +163,8 @@ window.addEventListener("DOMContentLoaded", () => {
       linkHoverAnimation.reverse();
     });
   });
+
+  setTimeout(window.location.reload, 5000);
 });
 circle();
 theme();

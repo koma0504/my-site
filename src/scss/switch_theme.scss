@@ -1,76 +1,73 @@
+@use "breakpoints" as *;
+
 .switch_theme {
   position: fixed;
-  bottom: 11%;
-  left: 3%;
-  width: 100%;
+  bottom: var(--inner_position2);
+  left: var(--inner_position2);
+  width: fit-content;
   z-index: 11;
-  .theme_inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    .theme_list {
-      position: absolute;
-      bottom: 4%;
-      left: 4%;
-      input {
-        /* コンテンツの流れから切り離す */
-        position: absolute;
-        /* 誤ったコードに対処するための回避策 */
-        white-space: nowrap;
-        /* 可能な限り文字サイズを小さくするための処理
+  @include mq(sm) {
+    transform: rotate(90deg);
+    bottom: 15%;
+    left: 0;
+  }
+  input {
+    /* コンテンツの流れから切り離す */
+    position: absolute;
+    /* 誤ったコードに対処するための回避策 */
+    white-space: nowrap;
+    /* 可能な限り文字サイズを小さくするための処理
              * (スクリーンリーダー中には height と width が 0 のものを無視するため)
              */
-        width: 1px;
-        height: 1px;
-        /* オーバーフローしているコンテンツを隠す */
-        overflow: hidden;
-        /* 要素サイズを変更しうるプロパティのリセット */
-        border: 0;
-        padding: 0;
-        /* 要素のどの部分が表示されるかを定義するもの */
-        /* 古いブラウザでは使用できない */
-        clip: rect(0 0 0 0);
-        /* 最近のブラウザ用
+    width: 1px;
+    height: 1px;
+    /* オーバーフローしているコンテンツを隠す */
+    overflow: hidden;
+    /* 要素サイズを変更しうるプロパティのリセット */
+    border: 0;
+    padding: 0;
+    /* 要素のどの部分が表示されるかを定義するもの */
+    /* 古いブラウザでは使用できない */
+    clip: rect(0 0 0 0);
+    /* 最近のブラウザ用
              * コンテンツを非表示にする設定  */
-        clip-path: inset(50%);
-        /* 今現在なぜ-1pxがここで設定されるかは分かっていないそうです。
+    clip-path: inset(50%);
+    /* 今現在なぜ-1pxがここで設定されるかは分かっていないそうです。
              * それに加えていくつか問題もあるそうです 
              * (参考: https://github.com/h5bp/html5-boilerplate/issues/1985)
              */
-        margin: -1px;
-        &:checked + label::after {
-          opacity: 1;
-        }
-      }
-      label {
-        cursor: pointer;
-        padding-left: 30px;
-        position: relative;
-        &::before,
-        &::after {
-          content: '';
-          display: block;
-          position: absolute;
-        }
-        &::before {
-          background-color: #fff;
-          border-radius: 0%;
-          border: 1px solid #ddd;
-          width: 16px;
-          height: 16px;
-          transform: translateY(-50%);
-          top: 50%;
-          left: 5px;
-        }
-        &::after {
-          background-color: #000;
-          opacity: 0;
-          height: 16px;
-          width: 16px;
-          top: 2.5px;
-          left: 5px;
-        }
-      }
+    margin: -1px;
+    &:checked + label::after {
+      opacity: 1;
+    }
+  }
+  label {
+    cursor: pointer;
+    padding-left: 30px;
+    position: relative;
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+    }
+    &::before {
+      background-color: #fff;
+      border-radius: 0%;
+      border: 1px solid #ddd;
+      width: 16px;
+      height: 16px;
+      transform: translateY(-50%);
+      top: 50%;
+      left: 5px;
+    }
+    &::after {
+      background-color: #000;
+      opacity: 0;
+      height: 16px;
+      width: 16px;
+      top: 2.5px;
+      left: 5px;
     }
   }
 }

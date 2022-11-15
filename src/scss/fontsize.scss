@@ -1,0 +1,19 @@
+// 参考サイト
+// https://crepro-media.com/pickup/cssclamp/
+
+/*$minFont　最小のフォントサイズを引数として受け取る（単位なし）*/
+@function fs($minFont) {
+  /*そのサイトで変動させたい最小の画面ビューポートのサイズ*/
+  $minWidth: 480;
+  /*そのサイトで変動させたい最大の画面ビューポートのサイズ*/
+  $maxWidth: 1020;
+  /*pxの単位を付ける*/
+  $minFontSize: $minFont * 1px;
+  /*最小のフォントサイズとビューポートのサイズを使って、vwを求める
+   　値は小数点第３位までで四捨五入する*/
+  $fontVw: calc(round(calc($minFont/$minWidth) * 100 * 1000) / 1000);
+  /*求めたvwと最大ビューポートのサイズを使って、最大フォントサイズを求める*/
+  $maxFontSize: round($maxWidth * calc($fontVw/100)) * 1px;
+  /*求めた値を使って、clamp()関数を返す*/
+  @return clamp(#{$minFontSize}, #{$fontVw}vw, #{$maxFontSize});
+}

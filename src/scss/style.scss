@@ -1,7 +1,8 @@
 @use "reset";
+@use "fontsize" as *;
+@use "breakpoints" as *;
 @use "theme";
 @use "switch_theme";
-@use "breakpoints";
 
 @font-face {
   font-family: "f5.6";
@@ -12,19 +13,22 @@
 :root {
   --frame_width: min(0.2vw, 1.6px);
   --frame_height: min(0.2vw, 1.6px);
-  // --inner_position: clamp(48px, 6%, 60px) max(4%, 16px);
   --inner_position: min(8%, 32px);
-  // --inner_position2: clam,p(calc(48px + 4%), calc(6% + 4%), calc(60px + 4%)) max(calc(4% + 4%), calc(16px + 4%));
   --inner_position2: min(12%, 60px);
 }
 html {
   font-family: "IBM Plex Sans", sans-serif;
+  height: 100vh;
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  overscroll-behavior: none; /* バウンススクロール止める */
 }
 body {
   &::-webkit-scrollbar {
     display: none;
   }
 }
+
 ul,
 li {
   margin: 0;
@@ -74,6 +78,9 @@ li {
       align-items: center;
       justify-content: space-between;
       width: 80%;
+      @include mq(sm) {
+        display: none;
+      }
       .line {
         width: 30%;
         height: var(--frame_width);
@@ -99,14 +106,14 @@ li {
   width: 100%;
   height: 100%;
   .header_wrap {
-    position: absolute;
-    top: var(--inner_position2);
+    width: fit-content;
+    text-align: center;
   }
   .title {
-    font-size: min(8vw, 60px);
+    font-size: fs(24);
   }
   .sub_title {
-    font-size: min(4vw, 29px);
+    font-size: fs(11.5);
   }
 }
 .main {
@@ -119,17 +126,12 @@ li {
     height: 100%;
     display: none;
     position: relative;
-    .contents {
-      position: absolute;
-      bottom: 4%;
-      right: 4%;
-    }
-  }
-  section:first-child {
-    display: block;
   }
   .contents {
-    text-align: right;
+    position: fixed;
+    bottom: var(--inner_position2);
+    right: var(--inner_position2);
+    width: fit-content;
   }
   .contents_title {
     margin-bottom: 56px;
@@ -149,18 +151,19 @@ li {
   }
   .projects {
     .contents_items {
+      text-align: right;
       & + .contents_items {
         margin-top: 60px;
       }
     }
     .contents_link {
       text-decoration: none;
-      font-size: 56px;
+      font-size: fs(26);
       display: inline-block;
       margin-bottom: 12px;
     }
     .contents_role {
-      font-size: 24px;
+      font-size: fs(14);
       font-weight: 100;
     }
   }
@@ -189,8 +192,8 @@ li {
   }
   .circle {
     position: absolute;
-    right: 6%;
-    top: 6%;
+    right: min(8%, 32px);
+    top: min(8%, 32px);
     width: 150px;
     height: 150px;
     border: solid 2px;
@@ -216,19 +219,12 @@ li {
     }
   }
 }
-section {
-  .contents {
-    position: absolute;
-    bottom: 4%;
-    right: 4%;
-  }
-}
 .nav {
   position: fixed;
   left: 0;
   right: 0;
   margin: 0 auto;
-  bottom: clamp(24px, 3vw, 48px);
+  bottom: var(--inner_position);
   ul {
     display: flex;
     align-items: center;

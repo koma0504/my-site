@@ -128,13 +128,18 @@ li {
     position: relative;
   }
   .contents {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     bottom: var(--inner_position2);
     right: var(--inner_position2);
     width: fit-content;
+    height: 72vh;
+    overflow: scroll;
   }
   .contents_title {
-    margin-bottom: 56px;
+    margin: auto 0 56px;
+    text-align: right;
   }
   .home {
     display: block;
@@ -192,8 +197,8 @@ li {
   }
   .circle {
     position: absolute;
-    right: min(8%, 32px);
-    top: min(8%, 32px);
+    right: calc(var(--inner_position) - 30px);
+    top: calc(var(--inner_position) - 30px);
     width: 150px;
     height: 150px;
     border: solid 2px;

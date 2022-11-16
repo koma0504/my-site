@@ -7,9 +7,9 @@
   width: fit-content;
   z-index: 11;
   @include mq(sm) {
+    transform-origin: right bottom;
     transform: rotate(90deg);
-    bottom: 15%;
-    left: 0;
+    left: calc(var(--inner_position2) - 128px);
   }
   input {
     /* コンテンツの流れから切り離す */

@@ -18,7 +18,7 @@
 }
 html {
   font-family: "IBM Plex Sans", sans-serif;
-  height: 100vh;
+  height: 100dvh;
   overflow: auto;
   scrollbar-width: none; /* Firefox */
   overscroll-behavior: none; /* バウンススクロール止める */
@@ -134,8 +134,6 @@ li {
     bottom: var(--inner_position2);
     right: var(--inner_position2);
     width: fit-content;
-    height: 72vh;
-    overflow: scroll;
   }
   .contents_title {
     margin: auto 0 56px;
@@ -155,6 +153,10 @@ li {
     }
   }
   .projects {
+    .contents {
+      height: 72vh;
+      overflow: scroll;
+    }
     .contents_items {
       text-align: right;
       & + .contents_items {

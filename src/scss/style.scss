@@ -18,7 +18,8 @@
 }
 html {
   font-family: "IBM Plex Sans", sans-serif;
-  height: 100dvh;
+  height: 100vh;
+  height: -webkit-fill-available;
   overflow: auto;
   scrollbar-width: none; /* Firefox */
   overscroll-behavior: none; /* バウンススクロール止める */

@@ -18,13 +18,18 @@
 }
 html {
   font-family: "IBM Plex Sans", sans-serif;
-  height: 100vh;
-  height: 100svh;
+  height: 100%;
+  box-sizing: border-box;
+  line-height: 1;
+  font-feature-settings: "palt";
+  user-select: none;
+  text-size-adjust: none;
   overflow: auto;
   scrollbar-width: none; /* Firefox */
   overscroll-behavior: none; /* バウンススクロール止める */
 }
 body {
+  height: 100%;
   &::-webkit-scrollbar {
     display: none;
   }

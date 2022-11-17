@@ -17,7 +17,6 @@
   --inner_position2: min(8%, 60px);
 }
 html {
-  transform: translate3d(0, 0, 0);
   font-family: "IBM Plex Sans", sans-serif;
   height: 100%;
   box-sizing: border-box;
@@ -25,7 +24,7 @@ html {
   font-feature-settings: "palt";
   user-select: none;
   text-size-adjust: none;
-  overflow: auto;
+  overflow: hidden;
   scrollbar-width: none; /* Firefox */
   overscroll-behavior: none; /* バウンススクロール止める */
 }

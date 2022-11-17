@@ -17,6 +17,7 @@
   --inner_position2: min(8%, 60px);
 }
 html {
+  transform: translate3d(0, 0, 0);
   font-family: "IBM Plex Sans", sans-serif;
   height: 100%;
   box-sizing: border-box;

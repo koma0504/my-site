@@ -24,7 +24,7 @@ html {
   font-feature-settings: "palt";
   user-select: none;
   text-size-adjust: none;
-  overflow: hidden;
+  overflow: auto;
   scrollbar-width: none; /* Firefox */
   overscroll-behavior: none; /* バウンススクロール止める */
 }
@@ -130,7 +130,7 @@ li {
   section {
     width: 100%;
     height: 100%;
-    display: none;
+    // display: none;
     position: relative;
   }
   .contents {
@@ -160,8 +160,6 @@ li {
   }
   .projects {
     .contents {
-      height: 72vh;
-      overflow: scroll;
     }
     .contents_items {
       text-align: right;
@@ -266,4 +264,16 @@ li {
 }
 .z-index3 {
   z-index: 3;
+}
+#test {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  padding: 10px;
+  overflow: hidden;
+}
+#testbox {
+  width: 100%;
+  height: 900px;
+  background-color: aquamarine;
 }

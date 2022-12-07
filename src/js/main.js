@@ -60,8 +60,17 @@ window.addEventListener("DOMContentLoaded", () => {
   const navList = document.querySelectorAll(".js-nav a");
   const navArray = Array.from(navList);
 
+  //初期化
+  pageList.forEach((page, index) => {
+    if (index === 0) {
+      page.style.display = "block";
+    } else {
+      page.style.display = "none";
+    }
+  });
+  //動き
   const pageTransition = () => {
-    navList.forEach((navItem, index) => {
+    navList.forEach((navItem) => {
       navItem.addEventListener("click", (e) => {
         e.preventDefault();
         pageList.forEach((page) => {
@@ -110,7 +119,6 @@ window.addEventListener("DOMContentLoaded", () => {
   };
   // F値初期化
   gsap.set(".circle_number", { rotation: 218 });
-
   const scrollParallax = () => {
     let scrollY = window.pageYOffset;
     let rotationSize = map(scrollY, 0, windowHeight, 0, 325);

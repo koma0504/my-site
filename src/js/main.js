@@ -7,8 +7,10 @@ import { circle } from "./circle";
 
 window.addEventListener("DOMContentLoaded", () => {
   //bg関連//////////////////////////
-  const darkImages = '<div class="bg js-bg"><img src="../image/image02.jpg" alt="" /><img src="../image/image03.jpg" alt="" /></div>';
-  const lightImages = '<div class="bg js-bg"><img src="../image/image01.jpg" alt="" /><img src="../image/image04.jpg" alt="" /></div>';
+  const darkImages =
+    '<div class="bg js-bg"><img src="../image/image_dark01.jpg" alt="" /><img src="../image/image_dark02.jpg" alt="" /><img src="../image/image_dark03.jpg" alt="" /><img src="../image/image_dark04.jpg" alt="" /></div>';
+  const lightImages =
+    '<div class="bg js-bg"><img src="../image/image_light05.jpg" alt="" /><img src="../image/image_light02.jpg" alt="" /><img src="../image/image_light03.jpg" alt="" /><img src="../image/image_light04.jpg" alt="" /></div>';
 
   // bg追加
   const bgAppend = (bgHtmlEle) => {
@@ -38,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const bgContainer = document.querySelector(".bg_container");
     const bg = document.querySelector(".bg");
     bgContainer.removeChild(bg);
-    if (storageTheme !== "is-theme-dark") {
+    if (storageTheme === "is-theme-dark") {
       bgAppend(darkImages);
       const bgImages = Array.from(document.querySelectorAll(".js-bg img"));
       imageRandom(bgImages);

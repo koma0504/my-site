@@ -1,4 +1,4 @@
-export const scroll = () => {
+export const Scroll = () => {
   // wheel event
   const wheel = "onwheel" in document ? "wheel" : "onmousewheel" in document ? "mousewheel" : "DOMMouseScroll";
 
@@ -211,13 +211,11 @@ export const scroll = () => {
       elem.style["transform"] = transform;
       elem.style["-webkit-transition"] = `-webkit-transform ${ops}`;
       elem.style["transition"] = `transform ${ops}`;
-      console.log(pos);
     }
   }
-
-  const sc = new Scroll("projects", "contents");
-  sc.activate();
-  window.addEventListener("resize", () => {
-    sc.update();
-  });
+  //   const sc = new Scroll("projects", "contents");
+  //   sc.activate();
+  //   window.addEventListener("resize", () => {
+  //     sc.update();
+  //   });
 };

@@ -3,7 +3,7 @@ import "../scss/style.scss";
 import gsap from "gsap";
 import WebFont from "webfontloader";
 import { theme } from "./theme";
-import { circle } from "./circle";
+import { textCircle } from "./textCircle";
 
 window.addEventListener("DOMContentLoaded", () => {
   //bg関連//////////////////////////
@@ -176,5 +176,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
   setTimeout(window.location.reload, 5000);
 });
-circle();
+textCircle();
 theme();

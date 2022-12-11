@@ -1,4 +1,4 @@
-export const circle = () => {
+export const textCircle = () => {
   // 文字を円にする
   const ToArch = (element) => {
     // 要素内のテキストを抜き出して配列にする

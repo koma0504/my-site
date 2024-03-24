@@ -9,7 +9,7 @@
   @include mq(sm) {
     transform-origin: right bottom;
     transform: rotate(90deg);
-    left: calc(var(--inner_position2) - 128px);
+    left: calc(var(--inner_position2) - 220px);
   }
   input {
     /* コンテンツの流れから切り離す */

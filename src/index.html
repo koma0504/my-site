@@ -5,13 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>YUTA KOMA</title>
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./ts/main.ts"></script>
     <script src="https://kit.fontawesome.com/34dcea2353.js" crossorigin="anonymous"></script>
   </head>
 
   <body id="body">
     <div id="page" class="page">
-      <div class="bg_container"></div>
+      <div class="bg_container">
+        <img id="themeImage" alt="Theme Image" />
+      </div>
       <div class="frame">
         <div class="vertical">
           <div class="line right"></div>
@@ -39,7 +41,6 @@
         <section class="home">
           <div class="contents">
             <h2 class="contents_title">home</h2>
-
             <p class="about">
               小間 優太 / Koma Yuta<br />
               1990年生まれ。<br /><br />
@@ -87,10 +88,10 @@
         </section>
       </main>
       <div class="switch_theme">
-        <input type="radio" class="dark_btn js-theme_btn" name="switch_theme" value="dake" id="dake_btn" />
-        <label for="dake_btn">dark</label>
-        <input type="radio" class="light_btn js-theme_btn" name="switch_theme" value="light" id="light_btn" />
-        <label for="light_btn">light</label>
+        <input type="radio" id="light" name="theme" value="light" checked />
+        <label for="light">Light Mode</label>
+        <input type="radio" id="dark" name="theme" value="dark" />
+        <label for="dark">Dark Mode</label>
       </div>
       <nav class="nav js-nav z-index3">
         <ul class="menu_list">

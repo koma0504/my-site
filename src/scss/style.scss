@@ -9,7 +9,23 @@
   src: url(../font/F5.6-Regular.woff2) format("woff2");
 }
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap");
+body.dark-mode,
+body.dark-mode a {
+  color: #fff !important;
+  transition: background-color 0.3s, color 0.3s;
+}
+body.dark-mode .frame .line {
+  background-color: #fff !important;
+}
 
+body.light-mode,
+body.light-mode a {
+  color: #000 !important;
+  transition: background-color 0.3s, color 0.3s;
+}
+body.light-mode .frame .line {
+  background-color: #000 !important;
+}
 :root {
   --frame_width: min(0.2vw, 1.6px);
   --frame_height: min(0.2vw, 1.6px);

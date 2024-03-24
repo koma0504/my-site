@@ -15,6 +15,7 @@
   "dependencies": {
     "firebase": "^9.13.0",
     "gsap": "npm:@gsap/member@^3.11.2",
+    "typescript": "^5.3.3",
     "webfontloader": "^1.6.28"
   }
 }

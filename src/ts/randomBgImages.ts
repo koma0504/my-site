@@ -11,7 +11,6 @@ export function displayImageBasedOnTheme(): void {
     return;
   }
 
-  // ダークモードとライトモードの画像パスを配列で定義
   const darkThemeImagePaths = ["../images/image_dark01.jpg", "../images/image_dark02.jpg", "../images/image_dark03.jpg", "../images/image_dark04.jpg"];
   const lightThemeImagePaths = ["../images/image_light02.jpg", "../images/image_light03.jpg", "../images/image_light04.jpg", "../images/image_light05.jpg", "../images/image_light06.jpg"];
 
@@ -34,5 +33,4 @@ export function displayImageBasedOnTheme(): void {
   addObserver(updateImage);
   updateImage(getCurrentTheme());
 }
-
-document.addEventListener("DOMContentLoaded", displayImageBasedOnTheme);
+displayImageBasedOnTheme();

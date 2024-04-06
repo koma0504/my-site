@@ -1,36 +1,28 @@
+// imageDisplay.ts
+
 import { getCurrentTheme } from "./themeState";
 import { addObserver } from "./util/observer";
 
 export function displayImageBasedOnTheme(): void {
-  const imageElement = document.getElementById("themeImage") as HTMLImageElement;
+  const darkImages = document.querySelectorAll("#dark_images img");
+  const lightImages = document.querySelectorAll("#light_images img");
 
-  if (!imageElement) {
-    console.error("Image element not found");
-    return;
-  }
+  const updateImage = (theme) => {
+    const darkRandomImg = darkImages[Math.floor(Math.random() * darkImages.length)];
+    const lightRandomImg = lightImages[Math.floor(Math.random() * lightImages.length)];
 
-  const darkThemeImagePaths = ["../images/image_dark01.jpg", "../images/image_dark02.jpg", "../images/image_dark03.jpg", "../images/image_dark04.jpg"];
-  const lightThemeImagePaths = ["../images/image_light02.jpg", "../images/image_light03.jpg", "../images/image_light04.jpg", "../images/image_light05.jpg", "../images/image_light06.jpg"];
+    // Hide all images first
+    darkImages.forEach((img) => (img.style.display = "none"));
+    lightImages.forEach((img) => (img.style.display = "none"));
 
-  // 画像パスの配列からランダムに画像を選択する関数
-  const getRandomImagePath = (paths: string[]) => {
-    return paths[Math.floor(Math.random() * paths.length)];
-  };
-
-  const preloadImage = (src: string, callback: () => void) => {
-    const img = new Image();
-    img.onload = callback;
-    img.src = src;
-  };
-
-  const updateImage = (theme: string) => {
-    const selectedImagePath = theme === "dark" ? getRandomImagePath(darkThemeImagePaths) : getRandomImagePath(lightThemeImagePaths);
-
-    // プリロードしてから画像を更新
-    preloadImage(selectedImagePath, () => {
-      imageElement.src = selectedImagePath;
-      console.log(`${theme === "dark" ? "ダーク" : "ライト"}モード用の画像をランダムに表示`);
-    });
+    // Display a random image based on the theme
+    if (theme === "dark") {
+      darkRandomImg.style.display = "block";
+      console.log("Displayed a random dark mode image");
+    } else {
+      lightRandomImg.style.display = "block";
+      console.log("Displayed a random light mode image");
+    }
   };
 
   addObserver(updateImage);

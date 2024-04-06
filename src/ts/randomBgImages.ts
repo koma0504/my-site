@@ -1,5 +1,3 @@
-// imageDisplay.ts
-
 import { getCurrentTheme } from "./themeState";
 import { addObserver } from "./util/observer";
 
@@ -19,18 +17,24 @@ export function displayImageBasedOnTheme(): void {
     return paths[Math.floor(Math.random() * paths.length)];
   };
 
+  const preloadImage = (src: string, callback: () => void) => {
+    const img = new Image();
+    img.onload = callback;
+    img.src = src;
+  };
+
   const updateImage = (theme: string) => {
-    // 現在のテーマに応じて画像配列を選択し、ランダムに画像を表示
-    if (theme === "dark") {
-      imageElement.src = getRandomImagePath(darkThemeImagePaths);
-      console.log("ダークモード用の画像をランダムに表示");
-    } else {
-      imageElement.src = getRandomImagePath(lightThemeImagePaths);
-      console.log("ライトモード用の画像をランダムに表示");
-    }
+    const selectedImagePath = theme === "dark" ? getRandomImagePath(darkThemeImagePaths) : getRandomImagePath(lightThemeImagePaths);
+
+    // プリロードしてから画像を更新
+    preloadImage(selectedImagePath, () => {
+      imageElement.src = selectedImagePath;
+      console.log(`${theme === "dark" ? "ダーク" : "ライト"}モード用の画像をランダムに表示`);
+    });
   };
 
   addObserver(updateImage);
   updateImage(getCurrentTheme());
 }
-displayImageBasedOnTheme();
+
+document.addEventListener("DOMContentLoaded", displayImageBasedOnTheme);

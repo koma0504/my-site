@@ -175,7 +175,13 @@ li {
     }
   }
   .projects {
-    .contents {
+    .contents_block {
+      height: calc(100vh - 340px);
+      overflow-y: scroll;
+      scroll-behavior: smooth;
+    }
+    .contents_list {
+      height: 100%;
     }
     .contents_items {
       text-align: right;
@@ -216,23 +222,27 @@ li {
     .contents {
     }
   }
+
   .circle {
     position: absolute;
     right: calc(var(--inner_position) - 30px);
     top: calc(var(--inner_position) - 30px);
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
     border: solid 2px;
     border-radius: 9999px;
     display: grid;
     place-items: center;
     .circle_number {
-      width: 120px;
-      height: 120px;
-      font-family: "f5.6";
-      span {
-        line-height: 0;
-      }
+      //サークルを作るための素材なので非表示にしてあります。
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+      opacity: 0;
+    }
+    .circular_svg {
+      position: absolute;
     }
     .triangle {
       position: absolute;
@@ -278,4 +288,8 @@ li {
 }
 .z-index3 {
   z-index: 3;
+}
+.circular-svg {
+  position: absolute;
+  z-index: 100;
 }

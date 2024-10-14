@@ -1,35 +1,44 @@
-// themeSwitcher.ts
-
 import { getCurrentTheme, setCurrentTheme } from "./themeState";
 import { addObserver } from "./util/observer";
 
+/**
+ * テーマスイッチャーを初期化する関数
+ * - 現在のテーマに基づいてUIを更新し、ユーザーがテーマを切り替えた際に処理を行う
+ */
 export function initializeThemeSwitcher(): void {
+  // ライトモードとダークモードのラジオボタンを取得
   const lightModeRadio = document.querySelector<HTMLInputElement>("#light");
   const darkModeRadio = document.querySelector<HTMLInputElement>("#dark");
 
-  // UIを現在のテーマに合わせて更新
-  const updateTheme = (theme: string) => {
+  // UIを現在のテーマに合わせて更新する関数
+  const updateTheme = (theme: string): void => {
+    // 現在のテーマに応じて body のクラスを更新
     document.body.classList.remove("light-mode", "dark-mode");
     document.body.classList.add(`${theme}-mode`);
 
-    lightModeRadio!.checked = theme === "light";
-    darkModeRadio!.checked = theme === "dark";
+    // ラジオボタンの状態を更新
+    if (lightModeRadio && darkModeRadio) {
+      lightModeRadio.checked = theme === "light";
+      darkModeRadio.checked = theme === "dark";
+    }
   };
 
-  // ラジオボタンの変更でテーマを設定
-  lightModeRadio!.addEventListener("change", () => {
+  // ライトモードのラジオボタンが変更されたときにテーマを「light」に設定
+  lightModeRadio?.addEventListener("change", () => {
     setCurrentTheme("light");
   });
 
-  darkModeRadio!.addEventListener("change", () => {
+  // ダークモードのラジオボタンが変更されたときにテーマを「dark」に設定
+  darkModeRadio?.addEventListener("change", () => {
     setCurrentTheme("dark");
   });
 
-  // テーマ変更時にUI更新するリスナーを追加
+  // テーマの変更時にUIを更新するためのリスナーを追加
   addObserver(updateTheme);
 
-  // 初期化時に現在のテーマでUIを更新
+  // ページの初期化時に現在のテーマでUIを更新
   updateTheme(getCurrentTheme());
 }
 
+// DOMが読み込まれたらテーマスイッチャーを初期化
 document.addEventListener("DOMContentLoaded", initializeThemeSwitcher);
